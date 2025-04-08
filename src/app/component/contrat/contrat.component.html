@@ -1,0 +1,307 @@
+<div class="container-fluid">
+  <nav class="navbar navbar-expand-lg navbar-light bg-light">
+    <div class="container-fluid">
+      <a class="navbar-brand" href="#">Information relative au Contrat </a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarSupportedContent">
+        <button class="btn btn-outline-success" data-bs-toggle="modal" data-bs-target="#addContrat" type="submit">Add Contrat</button>
+      </div>
+    </div>
+</nav>
+
+<table class="table table-hover">
+  <thead>
+    <tr>
+      <th scope="col">Contrat ID</th>
+      <th scope="col"> Employee</th>
+      <th scope="col"> Corps</th>
+      <th scope="col"> Classe</th>
+      <th scope="col"> Statut</th>
+      <th scope="col"> Echelon</th>
+      <th scope="col"> TypeContrat</th>
+      <!-- <th scope="col"> Agence</th> -->
+      <th scope="col"> TypeDePaie</th>
+      <th scope="col">Embouche</th>
+      <th scope="col"> DateFin</th>
+      <th scope="col"> NumCompte</th>
+      <th scope="col"> SalaireBase</th>
+      <th scope="col"> NbrPartFical</th>
+      <th scope="col"> NbrPartImpot</th>
+      <th scope="col"> NbrDenfantPrest</th>
+      <th scope="col"> JourBase</th>
+      <th scope="col"> NbreJourPresence</th>
+
+      <th scope="col">Action</th>
+
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let contrat of conList">
+       <td>{{contrat.id}}</td>
+      <td>{{contrat.employee?.name}}</td>
+      <td>{{contrat.corps?.name}}</td>
+      <td>{{contrat.classe?.name}}</td>
+      <!-- <td>{{contrat.statut?.name}}</td> -->
+      <td>{{contrat.echellon?.name}}</td>
+      <!-- <td>{{contrat.typeContrat?.name}}</td> -->
+      <td>{{contrat.typeDePaie?.name}}</td>
+      <td>{{contrat.embouche}}</td>
+      <td>{{contrat.dateFin}}</td>
+      <td>{{contrat.numCompte}}</td>
+      <td>{{contrat.salaireBase}}</td>
+      <td>{{contrat.nbrPartFical}}</td>
+      <td>{{contrat.nbrPartImpot}}</td>
+      <td>{{contrat.nbrDenfantPrest}}</td>
+      <td>{{contrat.nbrDenfantPrest}}</td>
+      <td>{{contrat.jourBase}}</td>
+      <td>{{contrat.nbreJourPresence}}</td>
+      <!-- <td>{{contrat.agence?.name}}</td> -->
+      
+      <td>
+          <button type="button" class="btn btn-outline-primary me-2" data-bs-toggle="modal" data-bs-target="#editContrat" (click)="getAllCorps(); getAllClasse(); getAllEmployee(); getAllEchellon();  getAllTypePaie(); getAllAgence(); editContrat(contrat)">Modifier</button>
+          <button type="button" class="btn btn-outline-danger" (click)="deleteContrat(contrat)">Supprimer</button>
+      </td>
+
+    </tr>
+    
+  </tbody>
+</table>
+
+<!-- Add Contrat modal -->
+<div class="modal fade" id="addContrat" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">saisir un Contrat</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        
+          <form [formGroup]="conDetail">
+              
+            <div class="mb-3">
+              <label for="employee" class="form-label">Employee </label>
+              <select formControlName="employeeId" id="employee" class="form-control" cSelect>
+                <option disabled  >Choisir...</option>
+                <option *ngFor="let employee of empList" [value]="employee.id">({{ employee.name }})</option>
+              </select>
+            </div>
+
+                <div class="mb-3">
+                  <label for="corps" class="form-label">Corps </label>
+                  <select formControlName="corpsId" id="corps" class="form-control" cSelect>
+                    <option disabled  >Choisir...</option>
+                    <option *ngFor="let corps of coList" [value]="corps.id">({{ corps.name }})</option>
+                  </select>
+                </div>
+                <div class="mb-3">
+                  <label for="classe" class="form-label">Classe </label>
+                  <select formControlName="classeId" id="classe" class="form-control" cSelect>
+                    <option disabled  >Choisir...</option>
+                    <option *ngFor="let classe of clasList" [value]="classe.id">({{ classe.name }})</option>
+                  </select>
+                </div>
+<!--                 
+                <div class="mb-3">
+                  <label for="statut" class="form-label">Statut </label>
+                  <select formControlName="statutId" id="statut" class="form-control" cSelect>
+                    <option disabled  >Choisir...</option>
+                    <option *ngFor="let statut of stList" [value]="statut.id">({{ statut.name }})</option>
+                  </select>
+                </div> -->
+                <div class="mb-3">
+                  <label for="echellon" class="form-label">Echellon </label>
+                  <select formControlName="echellonId" id="echellon" class="form-control" cSelect>
+                    <option disabled  >Choisir...</option>
+                    <option *ngFor="let echellon of echList" [value]="echellon.id">({{ echellon.name}})</option>
+                  </select>
+                </div>
+                <!-- <div class="mb-3">
+                  <label for="typeContrat" class="form-label">TypeContrat </label>
+                  <select formControlName="typeContratId" id="banque" class="form-control" cSelect>
+                    <option disabled  >Choisir...</option>
+                    <option *ngFor="let typeContrat of tyList" [value]="typeContrat.id">({{ typeContrat.name }})</option>
+                  </select>
+                </div> -->
+                <div class="mb-3">
+                  <label for="typeDePaie" class="form-label">TypeDePaie </label>
+                  <select formControlName="typeDePaieId" id="typeDePaie" class="form-control" cSelect>
+                    <option disabled  >Choisir...</option>
+                    <option *ngFor="let typeDePaie of typeList" [value]="typeDePaie.id">({{ typeDePaie.name }})</option>
+                  </select>
+                </div>
+                <!-- <div class="mb-3">
+                  <label for="egence" class="form-label">Agence </label>
+                  <select formControlName="agenceId" id="agence" class="form-control" cSelect>
+                    <option disabled  >Choisir...</option>
+                    <option *ngFor="let agence of agList" [value]="agence.id">({{ agence.name }})</option>
+                  </select>
+                </div> -->
+
+                <div class="mb-3">
+                  <label for="exampleInputEmail1" class="form-label">Embouche </label>
+                  <input type="text" formControlName="embouche" class="form-control" id="embouche" aria-describedby="emailHelp">
+                </div>
+                <div class="mb-3">
+                  <label for="exampleInputEmail1" class="form-label">DateFin </label>
+                  <input type="text" formControlName="dateFin" class="form-control" id="dateFin" aria-describedby="emailHelp">
+                </div>
+                <div class="mb-3">
+                  <label for="exampleInputEmail1" class="form-label">NumCompte </label>
+                  <input type="text" formControlName="numCompte" class="form-control" id="numCompte" aria-describedby="emailHelp">
+                </div>
+                <div class="mb-3">
+                  <label for="exampleInputEmail1" class="form-label">SalaireBase </label>
+                  <input type="text" formControlName="salaireBase" class="form-control" id="salaireBase" aria-describedby="emailHelp">
+                </div>
+                <div class="mb-3">
+                  <label for="exampleInputEmail1" class="form-label">NbrPartFical </label>
+                  <input type="text" formControlName="nbrPartFical" class="form-control" id="nbrPartFical" aria-describedby="emailHelp">
+                </div>
+                <div class="mb-3">
+                  <label for="exampleInputEmail1" class="form-label">NbrPartImpot </label>
+                  <input type="text" formControlName="nbrPartImpot" class="form-control" id="nbrPartImpot" aria-describedby="emailHelp">
+                </div>
+                <div class="mb-3">
+                  <label for="exampleInputEmail1" class="form-label">NbrDenfantPrest </label>
+                  <input type="text" formControlName="nbrDenfantPrest" class="form-control" id="nbrDenfantPrest" aria-describedby="emailHelp">
+                </div>
+                <div class="mb-3">
+                  <label for="exampleInputEmail1" class="form-label">JourBase </label>
+                  <input type="text" formControlName="jourBase" class="form-control" id="jourBase" aria-describedby="emailHelp">
+                </div>
+                <div class="mb-3">
+                  <label for="exampleInputEmail1" class="form-label">NbreJourPresence </label>
+                  <input type="text" formControlName="nbreJourPresence" class="form-control" id="nbreJourPresence" aria-describedby="emailHelp">
+                </div>
+
+                <div class="modal-footer">
+                  <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Fermer</button>
+                  <button type="button" class="btn btn-primary" data-bs-dismiss="modal" (click)="addContrat()">Add Contrat  </button>
+                </div>
+            </form>
+  
+  
+      </div>
+    </div>
+  </div>
+  </div>
+
+  <!-- Edit Contrat modal -->
+<div class="modal fade" id="editContra" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">Edit Contrat details</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+  
+          <form [formGroup]="conDetail">
+              
+            <div class="mb-3">
+              <label for="employee" class="form-label">Employee </label>
+              <select formControlName="employeeId" id="employee" class="form-control" cSelect>
+                <option disabled  >Choisir...</option>
+                <option *ngFor="let employee of empList" [value]="employee.id">({{ employee.name }})</option>
+              </select>
+            </div>
+                <div class="mb-3">
+                  <label for="corps" class="form-label">Corps </label>
+                  <select formControlName="corpsId" id="corps" class="form-control" cSelect>
+                    <option disabled  >Choisir...</option>
+                    <option *ngFor="let corps of coList" [value]="corps.id">({{ corps.name }})</option>
+                  </select>
+                </div>
+                <div class="mb-3">
+                  <label for="classe" class="form-label">Classe </label>
+                  <select formControlName="classeId" id="classe" class="form-control" cSelect>
+                    <option disabled  >Choisir...</option>
+                    <option *ngFor="let classe of clasList" [value]="classe.id">({{ classe.name }})</option>
+                  </select>
+                </div>
+               
+                <!-- <div class="mb-3">
+                  <label for="statut" class="form-label">Statut </label>
+                  <select formControlName="statutId" id="statut" class="form-control" cSelect>
+                    <option disabled  >Choisir...</option>
+                    <option *ngFor="let statut of stList" [value]="statut.id">({{ statut.name }})</option>
+                  </select>
+                </div> -->
+                <div class="mb-3">
+                  <label for="echellon" class="form-label">Echellon </label>
+                  <select formControlName="echellonId" id="echellon" class="form-control" cSelect>
+                    <option disabled  >Choisir...</option>
+                    <option *ngFor="let echellon of echList" [value]="echellon.id">({{ echellon.name }})</option>
+                  </select>
+                </div>
+                <!-- <div class="mb-3">
+                  <label for="typeContrat" class="form-label">TypeContrat </label>
+                  <select formControlName="typeContratId" id="banque" class="form-control" cSelect>
+                    <option disabled  >Choisir...</option>
+                    <option *ngFor="let typeContrat of tyList" [value]="typeContrat.id">({{ typeContrat.name }})</option>
+                  </select>
+                </div> -->
+                <div class="mb-3">
+                  <label for="typeDePaie" class="form-label">TypeDePaie </label>
+                  <select formControlName="typeDePaieId" id="typeDePaie" class="form-control" cSelect>
+                    <option disabled  >Choisir...</option>
+                    <option *ngFor="let typeDePaie of typeList" [value]="typeDePaie.id">({{ typeDePaie.name }})</option>
+                  </select>
+                </div>
+                <div class="mb-3">
+                  <label for="agence" class="form-label">Agence </label>
+                  <select formControlName="agenceId" id="agence" class="form-control" cSelect>
+                    <option disabled  >Choisir...</option>
+                    <option *ngFor="let agence of agList" [value]="agence.id">({{ agence.name }})</option>
+                  </select>
+                </div>
+                
+                <div class="mb-3">
+                  <label for="exampleInputEmail1" class="form-label">Embouche </label>
+                  <input type="text" formControlName="embouche" class="form-control" id="embouche" aria-describedby="emailHelp">
+                </div>
+                <div class="mb-3">
+                  <label for="exampleInputEmail1" class="form-label">DateFin </label>
+                  <input type="text" formControlName="dateFin" class="form-control" id="dateFin" aria-describedby="emailHelp">
+                </div>
+                <div class="mb-3">
+                  <label for="exampleInputEmail1" class="form-label">NumCompte </label>
+                  <input type="text" formControlName="numCompte" class="form-control" id="numCompte" aria-describedby="emailHelp">
+                </div>
+                <div class="mb-3">
+                  <label for="exampleInputEmail1" class="form-label">SalaireBase </label>
+                  <input type="text" formControlName="salaireBase" class="form-control" id="salaireBase" aria-describedby="emailHelp">
+                </div>
+                <div class="mb-3">
+                  <label for="exampleInputEmail1" class="form-label">NbrPartFical </label>
+                  <input type="text" formControlName="nbrPartFical" class="form-control" id="nbrPartFical" aria-describedby="emailHelp">
+                </div>
+                <div class="mb-3">
+                  <label for="exampleInputEmail1" class="form-label">NbrPartImpot </label>
+                  <input type="text" formControlName="nbrPartImpot" class="form-control" id="nbrPartImpot" aria-describedby="emailHelp">
+                </div>
+                <div class="mb-3">
+                  <label for="exampleInputEmail1" class="form-label">NbrDenfantPrest </label>
+                  <input type="text" formControlName="nbrDenfantPrest" class="form-control" id="nbrDenfantPrest" aria-describedby="emailHelp">
+                </div>
+                <div class="mb-3">
+                  <label for="exampleInputEmail1" class="form-label">JourBase </label>
+                  <input type="text" formControlName="jourBase" class="form-control" id="jourBase" aria-describedby="emailHelp">
+                </div>
+                <div class="mb-3">
+                  <label for="exampleInputEmail1" class="form-label">NbreJourPresence </label>
+                  <input type="text" formControlName="nbreJourPresence" class="form-control" id="nbreJourPresence" aria-describedby="emailHelp">
+                </div>
+
+                <div class="modal-footer">
+                  <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Fermer </button>
+                  <button type="button" class="btn btn-outline-success" (click)="updateContrat()" data-bs-dismiss="modal">Update </button>
+                </div>
+            </form>
+      </div>
+    </div>
+  </div>
+  </div>

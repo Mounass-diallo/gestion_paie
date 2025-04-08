@@ -1,0 +1,36 @@
+.full-width-container {
+    width: 100vw; 
+    height: 100vh; 
+    overflow: hidden; 
+  }
+  
+  .custom-drawer {
+    background-color: #529780; 
+    color: #ffffff;
+  }
+  
+  .mat-list-item {
+    color: #ffffff; 
+  }
+  
+  .mat-list-item:hover {
+    background-color: #084a34; 
+  }
+  
+  .custom-drawer-content {
+    width: calc(100vw - 240px); 
+    height: 100vh; 
+    overflow-y: auto; 
+  }
+  
+  .content {
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+  }
+  
+  .container {
+    flex-grow: 1;
+    overflow-y: auto;
+  }
+  

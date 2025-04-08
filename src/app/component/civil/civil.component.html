@@ -1,0 +1,90 @@
+<div class="container-fluid">
+
+    <nav class="navbar navbar-expand-lg navbar-light bg-light" >
+        <div class="container-fluid" >
+          <a class="navbar-brand" href="#">Etat civil</a>
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+          </button>
+          <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <button class="btn btn-outline-success" data-bs-toggle="modal" data-bs-target="#addCivil" type="submit">Ajouter</button>
+          </div>
+      
+        </div>
+    </nav>
+
+
+
+    <table  class="table table-hover">
+        <thead>
+          <tr>
+            <th scope="col"> ID</th>
+            <th scope="col">Name</th>
+        </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let civil of civList">
+        <td>{{civil.id}}</td>
+        <td>{{civil.name}}</td>
+        <td>
+            <button type="button" class="btn btn-outline-primary me-2" data-bs-toggle="modal" data-bs-target="#editCivil" (click)="editCivil(civil)">Modifier</button>
+            <button type="button" class="btn btn-outline-danger" (click)="deleteCivil(civil)">Supprimer</button>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+  <!-- Add civil modal -->
+  <div class="modal fade" id="addCivil" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="exampleModalLabel">Ajouter un nouveau etat</h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+          
+            <form [formGroup]="civDetail">
+                <div class="mb-3">
+                    <label for="exampleInputEmail1" class="form-label">Name </label>
+                    <input type="text" formControlName="name" class="form-control" id="name" aria-describedby="emailHelp">
+                  </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Fermer</button>
+                    <button type="button" class="btn btn-primary" data-bs-dismiss="modal" (click)="addCivil()">Ajout etat civil</button>
+                  </div>
+              </form>
+
+        </div>
+        
+      </div>
+    </div>
+  </div>
+  <!-- Edit civil modal -->
+  <div class="modal fade" id="editCivil" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="exampleModalLabel">Modifier les détail</h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+
+            <form [formGroup]="civDetail">
+                <div class="mb-3">
+                    <label for="exampleInputEmail1" class="form-label">Name </label>
+                    <input type="text" formControlName="name" class="form-control" id="name" aria-describedby="emailHelp">
+                  </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Fermer</button>
+                    <button type="button" class="btn btn-outline-success" (click)="updateCivil()" data-bs-dismiss="modal">Mettre à jour</button>
+                  </div>
+              </form>
+
+        </div>
+      </div>
+    </div>
+  </div>
+
+
+</div> 
+

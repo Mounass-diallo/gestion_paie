@@ -1,0 +1,76 @@
+<mat-drawer-container class="example-container full-width-container">
+    <mat-drawer mode="side" [opened]="sidebarstatus" class="custom-drawer">
+        <mat-list>
+          <mat-list role="list">
+            <mat-list-item role="listitem" routerLink="/dashboard">
+              <mat-icon></mat-icon>
+              <div>Employe</div>
+            </mat-list-item>
+            <mat-list-item role="listitem" routerLink="/banque">
+              <mat-icon></mat-icon>
+              <div>Banque</div>
+            </mat-list-item>
+            <mat-list-item role="listitem" routerLink="/agence">
+                <mat-icon></mat-icon>
+                <div>Agence</div>
+              </mat-list-item>
+            <mat-list-item role="listitem" routerLink="/typepaie">
+              <mat-icon></mat-icon>
+              <div>Type de paie</div>
+            </mat-list-item>
+            <mat-list-item role="listitem" routerLink="/modepaiement">
+              <mat-icon></mat-icon>
+              <div>Mode de paiement</div>
+            </mat-list-item>
+            <mat-list-item role="listitem" routerLink="/corps">
+                <mat-icon></mat-icon>
+                <div>Corps</div>
+              </mat-list-item>
+              <mat-list-item role="listitem" routerLink="/leservice">
+                <mat-icon></mat-icon>
+                <div>Service</div>
+              </mat-list-item>
+              <mat-list-item role="listitem" routerLink="/echellon">
+                <mat-icon></mat-icon>
+                <div>Echellon</div>
+              </mat-list-item>
+              <mat-list-item role="listitem" routerLink="/departement">
+                <mat-icon></mat-icon>
+                <div>departement</div>
+              </mat-list-item>
+              <mat-list-item role="listitem" routerLink="/direction">
+                <mat-icon></mat-icon>
+                <div>direction</div>
+              </mat-list-item>
+              <mat-list-item role="listitem" routerLink="/civil">
+                <mat-icon></mat-icon>
+                <div>civil</div>
+              </mat-list-item>
+              <mat-list-item role="listitem" routerLink="/classe">
+                <mat-icon></mat-icon>
+                <div>classe</div>
+              </mat-list-item>
+              <mat-list-item role="listitem" routerLink="/contrat">
+                <mat-icon></mat-icon>
+                <div>Contrat</div>
+              </mat-list-item>
+              <mat-list-item role="listitem" routerLink="/fichePaie">
+                <mat-icon></mat-icon>
+                <div>Fiche de paie</div>
+              </mat-list-item>
+
+          </mat-list>
+          </mat-list>
+          </mat-drawer>
+
+
+   
+    <mat-drawer-content class="custom-drawer-content">
+        <div class="content">
+            <app-toolbar (toggleSidenav)="sidebartoggle()"></app-toolbar>
+            <div class="container">
+              <router-outlet></router-outlet>
+            </div>
+        </div>
+    </mat-drawer-content>
+ 

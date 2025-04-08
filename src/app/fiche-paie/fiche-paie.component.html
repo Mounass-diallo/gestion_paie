@@ -1,0 +1,230 @@
+<section class="container-fluid" >
+  <div class="row  text-center" >
+      <h1>Bulletin de Paie</h1>
+    </div>
+  <br>
+    <table class=" table   text-center ">
+        <thead class="thead-dark">
+          <tr>
+            <th scope="col">
+                <div class="row">
+                <div class="col-md-4 card card text-dark  ">Nom Etablissement :</div>
+                <div class="col-md-7 card text-center"> Ministere de L'Education</div>
+                </div>
+            </th>
+            <th scope="col">
+              <div class="row">
+                <div class="col-md-3  card card text-dark ">Employe :</div>
+                <div class="col-md-3 card text-center">
+               <input type="text" class="border-0 text-center"  readonly="readonly" placeholder="matricule" [value]="ListEmploye?.matricule">
+                </div>
+                 <div class="col-md-3 card text-center">
+                  <input type="text" class="border-0 text-center"  readonly="readonly" placeholder="name" [value]="ListEmploye?.name">
+                   </div>
+                   <div class="col-md-3 card text-center">
+                    <input type="text" class="border-0 text-center"  readonly="readonly" placeholder="prenom" [value]="ListEmploye?.prenom">
+                  </div>
+              </div>
+              </th>
+          </tr>
+        </thead>
+
+    
+        <thead class="thead-dark">
+            <tr>
+
+              <th scope="col">
+                <div class="row">
+                  <div class="col-md-4 card card text-dark ">Etat Civil :</div>
+                  <div class="col-md-7 card text-center">
+                    <input type="text" class="border-0 text-center"  readonly="readonly" placeholder="EtatCivil" [value]="ListEmploye?.civil.name">
+                  </div>
+                  </div>
+              </th>
+              <th scope="col">
+
+                <div class="row">
+                  <div class="col-md-3  card card text-dark">Periode :</div>
+                  <div class="col-md-2 card text-center">
+                 <input type="text" class="border-0 text-center">
+                  </div>
+                  <div class="col-md-2 card card text-dark ">TypePaie :</div>
+                   <div class="col-md-3 card text-center">
+                    <input type="text" class="border-0 text-center"  readonly="readonly" placeholder="nom" [value]="ListEmploye?.type_paie">
+                     </div>
+                     <div class="col-md-2 card text-center">
+                      <input type="text" class="border-0 text-center"  readonly="readonly" placeholder="prenom" [value]="ListEmploye?.type_paie_ref">
+                    </div>
+                </div>
+              </th>
+              
+            </tr>
+          </thead>
+          <thead class="thead-dark">
+            <tr>
+
+              <th scope="col">
+                <div class="row">
+                  <div class="col-md-5  card card text-dark">Nombre d'epouse/Nombre total enfants (impot) :</div>
+                  <div class="col-md-3 card text-center">
+                 <input type="text" class="border-0 text-center"  readonly="readonly" placeholder="nombre Epouse" [value]="ListEmploye?.nbr_epouse">
+                  </div>
+                   <div class="col-md-3 card text-center">
+                    <input type="text" class="border-0 text-center"  readonly="readonly" placeholder="nombre Enfants" [value]="ListEmploye?.total_enfant">
+                     </div>
+                </div>
+              </th>
+              <th scope="col">
+                <div class="row">
+                  <div class="col-md-3  card card text-dark">Emploi :</div>
+                  <div class="col-md-9 card text-center">
+                 <input type="text" class="border-0 text-center"  readonly="readonly" placeholder="matricule" [value]="ListEmploye?.matricule">
+                  </div>
+                </div>
+              </th>
+              
+            </tr>
+          </thead>
+          <thead class="thead-dark">
+            <tr>
+
+              <th scope="col">
+                <div class="row">
+                  <div class="col-md-5  card card text-dark">Nombre part minimum fiscal/Nombre part impot :</div>
+                  <div class="col-md-3 card text-center">
+                 <input type="text" class="border-0 text-center"  readonly="readonly" placeholder="Nombre part minimum fiscal" [value]="ListEmploye?.nbr_part_fical">
+                  </div>
+                   <div class="col-md-3 card text-center">
+                    <input type="text" class="border-0 text-center"  readonly="readonly" placeholder="Nombre part impot" [value]="ListEmploye?.nbr_part_impot">
+                     </div>
+                </div>
+              </th>
+              <th scope="col">
+                <div class="row">
+                  <div class="col-md-2  card 
+                  card text-dark ">Corps :</div>
+                  <div class="col-md-2  card 
+                  card text-dark">Indice :</div>
+                  <div class="col-md-6 card text-center">
+                 <input type="text" class="border-0"  readonly="readonly" placeholder="Corps" [value]="ListEmploye?.nom_corps">
+                  </div>
+                   <div class="col-md-2 card text-center">
+                    <input type="text" class="border-0 text-center"  readonly="readonly" placeholder="Indice" [value]="ListEmploye?.salaire_base">
+                     </div>
+                </div>
+                </th>
+              
+            </tr>
+          </thead>
+          <thead class="thead-dark">
+            <tr>
+              <th scope="col">
+                <div class="row">
+                  <div class="col-md-5  card card text-dark
+                   ">Nombre enfant prestataire Familiale/Total enfants :</div>
+                  <div class="col-md-3 card text-center">
+                 <input type="text" class="border-0 text-center"  readonly="readonly" placeholder="Nombre part minimum fiscal" [value]="ListEmploye?.nbr_denfant_prest">
+                  </div>
+                   <div class="col-md-3 card text-center">
+                    <input type="text" class="border-0 text-center" text-center  readonly="readonly" placeholder="Nombre part impot" [value]="ListEmploye?.nbr_part_impot">
+                     </div>
+                </div>
+              </th>
+              <th scope="col">
+                <div class="row">
+                  <div class="col-md-2  card card text-dark">Classe :</div>
+                  <div class="col-md-2  card card text-dark">Echelon :</div>
+                  <div class="col-md-6 card text-center">
+                 <input type="text" class="border-0 text-center"  readonly="readonly" placeholder="Corps" [value]="ListEmploye?.nom_classe">
+                  </div>
+                   <div class="col-md-2 card text-center">
+                    <input type="text" class="border-0 text-center"  readonly="readonly" placeholder="Indice" [value]="ListEmploye?.nom_echelon">
+                     </div>
+                </div>
+              </th>
+              
+            </tr>
+          </thead>
+          <thead class="thead-dark">
+            <tr>
+              <th scope="col">
+                <div class="row">
+                  <div class="col-md-5  card card text-dark
+                   ">Jour de Base/Nombre jour de presence :</div>
+                  <div class="col-md-3 card text-center">
+                 <input type="text" class="border-0 text-center"  readonly="readonly" placeholder="Nombre part minimum fiscal" [value]="ListEmploye?.jour_base">
+                  </div>
+                   <div class="col-md-3 card text-center">
+                    <input type="text" class="border-0 text-center"  readonly="readonly" placeholder="Nombre part impot" [value]="ListEmploye?.nbre_jour_presence">
+                     </div>
+                </div>
+              </th>
+              <th scope="col">
+                <div class="row">
+                  <div class="col-md-2  card card text-dark">Statut :</div>
+                  <div class="col-md-3  card card text-dark">Hierarchie :</div>
+                  <div class="col-md-5 card text-center">
+                 <input type="text" class="border-0 text-center"  readonly="readonly" placeholder="Corps" [value]="ListEmploye?.statut_employe">
+                  </div>
+                   <div class="col-md-2 card text-center">
+                    <input type="text" class="border-0 text-center"  readonly="readonly" placeholder="Indice" [value]="ListEmploye?.nom_hierarchie">
+                     </div>
+                </div>
+              </th>
+              
+            </tr>
+          </thead>
+          <thead class="thead-dark">
+            <tr>
+              <th scope="col">
+                <div class="row">
+                  <div class="col-md-4 card card text-dark">Mode de payement :</div>
+                  <div class="col-md-7 card text-center">
+                    <input type="text" class="border-0 text-center"  readonly="readonly" placeholder="EtatCivil" [value]="ListEmploye?.mode_paie">
+                  </div>
+                  </div>
+              </th>
+              <th scope="col">
+                <div class="row">
+                  <div class="col-md-5 card card text-dark">Service :</div>
+                  <div class="col-md-7 card text-center">
+                    <input type="text" class="border-0"  readonly="readonly" placeholder="EtatCivil" [value]="ListEmploye?.mode_paie">
+                  </div>
+                  </div>
+              </th>
+              
+            </tr>
+          </thead>
+          <thead class="thead-dark">
+            <tr>
+              <th scope="col">
+                <div class="row">
+                  <div class="col-md-4 card card text-dark">Banque :</div>
+                  <div class="col-md-7 card text-center">
+                    <input type="text" class="border-0 text-center"  readonly="readonly" placeholder="EtatCivil" [value]="ListEmploye?.nom_banque">
+                  </div>
+                  </div>
+              </th>
+              <th scope="col">
+                <div class="row">
+                  <div class="col-md-2  card card text-dark">Agence :</div>
+                  <div class="col-md-2  card card text-dark">Compte :</div>
+                  <div class="col-md-5 card text-center">
+                 <input type="text" class="border-0"  readonly="readonly" placeholder="Corps" [value]="ListEmploye?.nom_agence">
+                  </div>
+                   <div class="col-md-3 card text-center">
+                    <input type="text" class="border-0 text-center"  readonly="readonly" placeholder="Indice" [value]="ListEmploye?.num_compte">
+                     </div>
+                    </div>
+              </th>
+              
+            </tr>
+          </thead>
+          
+      </table><br>
+      <!-- <button mat-raised-button color="primary" class="pull" type="submit" [disabled]="!addFormGroup.valid" (click)="addBulletin()">Creer fiche</button> -->
+      <!-- <button mat-raised-button color="warm" style="background-color: red; color: white;" class="pull-right" type="submit"mat-dialog-close>Fermer</button> -->
+</section>
+
+  
+  
